@@ -8,6 +8,7 @@ inherit packagegroup
 RDEPENDS_${PN} += "\
     base-passwd         \
     bash                \
+    busybox             \
     bzip2               \
     coreutils           \
     dosfstools          \
@@ -18,8 +19,12 @@ RDEPENDS_${PN} += "\
     gawk                \
     gptfdisk-sgdisk     \
     grep                \
+    init-ifupdown       \
     init-restore-mode   \
+    kernel-modules      \
     kmod                \
+    openssh-sshd        \
+    parted              \
     parted              \
     procps              \
     sed                 \
@@ -50,6 +55,6 @@ RDEPENDS_${PN}_append_xilinx-zynqhf = "\
     "
 
 RRECOMMENDS_${PN}_x64 = "\
-    kernel-module-tpm-tis \
     kernel-module-atkbd \
+    kernel-modules \
 "
