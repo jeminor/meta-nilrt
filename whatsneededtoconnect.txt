@@ -1,0 +1,19 @@
+    3  modprobe e1000
+    4  lsmod
+    5  dmesg
+    6  ifconfig 
+    7  ifconfig eth0 up
+    8  ifconfig
+    9  udhcpc --help
+   10  udhcpc eth0
+   11  which sshg
+   12  which sshd
+   13  /usr/sbin/sshd 
+   14  cat /etc/init.d/sshd 
+   15  /usr/libexec/openssh/sshd_check_keys
+   16  /usr/sbin/sshd 
+   17  mkdir -p /var/run/sshd
+   18  /usr/sbin/sshd 
+   19  ps aux | grep sshd
+   20  ifconfig
+   21  passwd root
