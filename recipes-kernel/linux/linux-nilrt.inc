@@ -113,13 +113,6 @@ pkg_postinst_ontarget_${KERNEL_PACKAGE_NAME}-base_append_x64 () {
 
 	echo "${KERNEL_IMAGETYPE}-${KERNEL_VERSION}" >> kernel-versions
 
-	if [ -L "${KERNEL_IMAGETYPE}" -o ! -f "${KERNEL_IMAGETYPE}" ]; then
-		ln -f -s "${KERNEL_IMAGETYPE}-${KERNEL_VERSION}" "${KERNEL_IMAGETYPE}"
-	else
-		echo "ERROR: $D/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE} file is not a symbolic link"
-		echo "ERROR: cannot switch to the new kernel image $D/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}"
-		exit 1
-	fi
 }
 
 pkg_prerm_${KERNEL_PACKAGE_NAME}-base_append_x64 () {

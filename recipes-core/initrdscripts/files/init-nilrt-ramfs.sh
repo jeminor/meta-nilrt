@@ -194,7 +194,7 @@ fi
 # Mount niboot.current
 readonly B_MNT="/mnt/niboot.current"
 mkdir "$B_MNT"
-mount -o ro,sync,relatime "/dev/niboot/niboot.current" "$B_MNT"
+mount -o rw,sync,relatime "/dev/niboot/niboot.current" "$B_MNT"
 
 # Mount niuser
 readonly U_MNT="/mnt/niuser"
@@ -333,6 +333,10 @@ mount -o remount,async "$U_MNT"
 
 status "Restore printk_devkmsg=$ORIG_KMSG_CONFIG"
 echo "$ORIG_KMSG_CONFIG" > "/proc/sys/kernel/printk_devkmsg"
+
+# Major hacking to set up demo feed
+rm "$U_MNT/overlay/image/etc/opkg/NI-dist.conf"
+echo "src/gz NI-test http://nickdanger/feeds/2021.0/ni-main [trusted=yes]" > "$U_MNT/overlay/image/etc/opkg/base-feeds.conf"
 
 status "Running switch_root to $U_MNT/overlay/image/"
 exec switch_root "$U_MNT/overlay/image/" /sbin/init $init_options
